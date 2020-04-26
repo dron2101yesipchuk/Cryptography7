@@ -85,7 +85,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isd-vy-sxP">
-                                <rect key="frame" x="10" y="108" width="172.5" height="30"/>
+                                <rect key="frame" x="10" y="108" width="119.5" height="30"/>
                                 <state key="normal" title="Create"/>
                                 <connections>
                                     <action selector="actionWithAuthorization:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxO-ez-gO2"/>
@@ -116,32 +116,43 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiw-FL-Dha">
-                                <rect key="frame" x="192.5" y="108" width="172.5" height="30"/>
+                                <rect key="frame" x="139.5" y="108" width="119" height="30"/>
                                 <state key="normal" title="GetData"/>
                                 <connections>
                                     <action selector="reloadAction:" destination="BEN-Cs-KdL" eventType="touchUpInside" id="jiM-Fq-e24"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h10-RV-2lt">
+                                <rect key="frame" x="268.5" y="108" width="96.5" height="30"/>
+                                <state key="normal" title="Save logs"/>
+                                <connections>
+                                    <action selector="saveAction:" destination="BEN-Cs-KdL" eventType="touchUpInside" id="wjt-R1-3Kw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="h10-RV-2lt" firstAttribute="width" secondItem="xiw-FL-Dha" secondAttribute="width" multiplier="0.807018" id="1nW-Ry-1Fc"/>
                             <constraint firstItem="8tC-lB-fKS" firstAttribute="top" secondItem="D2i-Y7-fa0" secondAttribute="bottom" constant="20" id="58f-G2-Cvu"/>
+                            <constraint firstItem="Kds-0m-Pw5" firstAttribute="top" secondItem="h10-RV-2lt" secondAttribute="bottom" constant="10" id="6AZ-qv-TVx"/>
                             <constraint firstItem="isd-vy-sxP" firstAttribute="width" secondItem="xiw-FL-Dha" secondAttribute="width" id="9Km-pb-fMB"/>
                             <constraint firstItem="D2i-Y7-fa0" firstAttribute="top" secondItem="yBM-JG-RwR" secondAttribute="top" id="CtA-Az-gjh"/>
                             <constraint firstItem="Kds-0m-Pw5" firstAttribute="leading" secondItem="yBM-JG-RwR" secondAttribute="leading" id="K4U-eh-TtK"/>
+                            <constraint firstItem="h10-RV-2lt" firstAttribute="top" secondItem="8tC-lB-fKS" secondAttribute="bottom" constant="20" id="L4m-IF-yk4"/>
                             <constraint firstItem="yBM-JG-RwR" firstAttribute="trailing" secondItem="8tC-lB-fKS" secondAttribute="trailing" constant="10" id="ONg-Ii-VvT"/>
                             <constraint firstItem="Kds-0m-Pw5" firstAttribute="top" secondItem="isd-vy-sxP" secondAttribute="bottom" constant="10" id="SAJ-9V-QNE"/>
                             <constraint firstItem="yBM-JG-RwR" firstAttribute="trailing" secondItem="Kds-0m-Pw5" secondAttribute="trailing" id="UAx-cf-O9C"/>
                             <constraint firstItem="xiw-FL-Dha" firstAttribute="leading" secondItem="isd-vy-sxP" secondAttribute="trailing" constant="10" id="aJf-PD-r3X"/>
                             <constraint firstItem="isd-vy-sxP" firstAttribute="top" secondItem="8tC-lB-fKS" secondAttribute="bottom" constant="20" id="cB4-fu-kLO"/>
                             <constraint firstItem="Kds-0m-Pw5" firstAttribute="top" secondItem="xiw-FL-Dha" secondAttribute="bottom" constant="10" id="cO3-Cd-d2w"/>
+                            <constraint firstItem="yBM-JG-RwR" firstAttribute="trailing" secondItem="h10-RV-2lt" secondAttribute="trailing" constant="10" id="jmd-WB-aWM"/>
+                            <constraint firstItem="h10-RV-2lt" firstAttribute="leading" secondItem="xiw-FL-Dha" secondAttribute="trailing" constant="10" id="kWv-rd-dI4"/>
                             <constraint firstItem="yBM-JG-RwR" firstAttribute="trailing" secondItem="D2i-Y7-fa0" secondAttribute="trailing" constant="10" id="lI4-cH-ian"/>
                             <constraint firstItem="8tC-lB-fKS" firstAttribute="leading" secondItem="yBM-JG-RwR" secondAttribute="leading" constant="10" id="nvT-cO-S5U"/>
                             <constraint firstItem="xiw-FL-Dha" firstAttribute="top" secondItem="8tC-lB-fKS" secondAttribute="bottom" constant="20" id="oZk-aV-HLQ"/>
                             <constraint firstItem="yBM-JG-RwR" firstAttribute="bottom" secondItem="Kds-0m-Pw5" secondAttribute="bottom" id="t4I-CH-ZNs"/>
                             <constraint firstItem="isd-vy-sxP" firstAttribute="leading" secondItem="yBM-JG-RwR" secondAttribute="leading" constant="10" id="tlo-QP-GYH"/>
                             <constraint firstItem="D2i-Y7-fa0" firstAttribute="leading" secondItem="yBM-JG-RwR" secondAttribute="leading" constant="10" id="uTk-RO-4tp"/>
-                            <constraint firstItem="yBM-JG-RwR" firstAttribute="trailing" secondItem="xiw-FL-Dha" secondAttribute="trailing" constant="10" id="yjf-4r-aag"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yBM-JG-RwR"/>
                     </view>

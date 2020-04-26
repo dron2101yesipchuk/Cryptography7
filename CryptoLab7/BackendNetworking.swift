@@ -40,8 +40,9 @@ class Networking {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        
+        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            LogService.shared.log(data: data, response: response, error: error)
             if let data = data {
                 if let info = try? JSONDecoder().decode([Info].self, from: data) {
                     success(info)
@@ -62,8 +63,9 @@ class Networking {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        
+        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            LogService.shared.log(data: data, response: response, error: error)
             if let data = data {
                 if let info = try? JSONDecoder().decode([Int].self, from: data) {
                     success(info)
@@ -95,8 +97,10 @@ class Networking {
             let data = try JSONSerialization.data(withJSONObject: json, options: [])
             request.httpBody = data
             
+            LogService.shared.log(request: request)
+            
             session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                
+                LogService.shared.log(data: data, response: response, error: error)
                 if let data = data {
                     if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
                         let dataResource = json["data"] as? NSDictionary {
@@ -118,6 +122,8 @@ class Networking {
                     }
                 }
             }).resume()
+            
+            
         } catch let error {
             failure(error.localizedDescription)
         }
@@ -137,9 +143,9 @@ class Networking {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        
+        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            
+            LogService.shared.log(data: data, response: response, error: error)
             if let data = data {
                 if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
                     let dataResource = json["data"] as? NSDictionary {
@@ -185,9 +191,9 @@ class Networking {
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: [])
             request.httpBody = data
-            
+            LogService.shared.log(request: request)
             session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                
+                LogService.shared.log(data: data, response: response, error: error)
                 if let data = data {
                     if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
                         let dataResource = json["data"] as? NSDictionary {
@@ -225,9 +231,9 @@ class Networking {
         let session = URLSession.shared
         let url = URL(string: urlString)!
         let request = URLRequest(url: url)
-        
+        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            
+            LogService.shared.log(data: data, response: response, error: error)
             if let data = data
             {
                 //let data = try?  JSONSerialization.data(withJSONObject: response, options: .prettyPrinted),
@@ -251,8 +257,9 @@ class Networking {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        
+        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            LogService.shared.log(data: data, response: response, error: error)
             if let data = data {
                 if let info = try? JSONDecoder().decode([Info].self, from: data) {
                     success(info)

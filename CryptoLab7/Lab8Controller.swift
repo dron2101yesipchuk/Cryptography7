@@ -68,6 +68,10 @@ class Lab8Controller: UIViewController {
     @IBAction func reloadAction(_ sender: UIButton) {
         self.reloadData()
     }
+    
+    @IBAction func saveAction(_ sender: UIButton) {
+        LogService.shared.saveLogs()
+    }
 }
 
 extension Lab8Controller: UITableViewDataSource, UITableViewDelegate {

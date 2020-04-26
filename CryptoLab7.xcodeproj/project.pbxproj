@@ -15,6 +15,7 @@
 		9F337231243FD5F30032E514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F33722F243FD5F30032E514 /* LaunchScreen.storyboard */; };
 		9F33723F2440CE880032E514 /* BackendNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33723E2440CE880032E514 /* BackendNetworking.swift */; };
 		9FC2B66B244B42A5006C241D /* Lab8Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC2B66A244B42A5006C241D /* Lab8Controller.swift */; };
+		9FE0885C2455AFA800DBAE11 /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE0885B2455AFA800DBAE11 /* LogService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9F337232243FD5F30032E514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F33723E2440CE880032E514 /* BackendNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendNetworking.swift; sourceTree = "<group>"; };
 		9FC2B66A244B42A5006C241D /* Lab8Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab8Controller.swift; sourceTree = "<group>"; };
+		9FE0885B2455AFA800DBAE11 /* LogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				9F337224243FD5EC0032E514 /* AppDelegate.swift */,
 				9F337226243FD5EC0032E514 /* SceneDelegate.swift */,
 				9F337228243FD5EC0032E514 /* ViewController.swift */,
+				9FE0885B2455AFA800DBAE11 /* LogService.swift */,
 				9F33723E2440CE880032E514 /* BackendNetworking.swift */,
 				9FC2B66A244B42A5006C241D /* Lab8Controller.swift */,
 				9F33722A243FD5EC0032E514 /* Main.storyboard */,
@@ -148,6 +151,7 @@
 				9FC2B66B244B42A5006C241D /* Lab8Controller.swift in Sources */,
 				9F337225243FD5EC0032E514 /* AppDelegate.swift in Sources */,
 				9F33723F2440CE880032E514 /* BackendNetworking.swift in Sources */,
+				9FE0885C2455AFA800DBAE11 /* LogService.swift in Sources */,
 				9F337227243FD5EC0032E514 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
