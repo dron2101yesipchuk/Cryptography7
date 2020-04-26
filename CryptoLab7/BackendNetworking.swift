@@ -40,16 +40,20 @@ class Networking {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            LogService.shared.log(data: data, response: response, error: error)
-            if let data = data {
+            var message = ""
+            if let error = error {
+                message = error.localizedDescription
+            } else if let data = data {
                 if let info = try? JSONDecoder().decode([Info].self, from: data) {
+                    message = "Getting info success"
                     success(info)
                 } else {
                     failure("Error")
                 }
             }
+            LogService.shared.log(log: Log(username: username, date: Date(),message: message))
+            
         }).resume()
     }
     
@@ -63,16 +67,20 @@ class Networking {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            LogService.shared.log(data: data, response: response, error: error)
-            if let data = data {
+            var message = ""
+            if let error = error {
+                message = error.localizedDescription
+            } else if let data = data {
                 if let info = try? JSONDecoder().decode([Int].self, from: data) {
+                    message = "Get ids success"
                     success(info)
                 } else {
+                    message = "Provide username and password"
                     failure("Error")
                 }
             }
+            LogService.shared.log(log: Log(username: username, date: Date(),message: message))
         }).resume()
     }
     
@@ -96,15 +104,16 @@ class Networking {
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: [])
             request.httpBody = data
-            
-            LogService.shared.log(request: request)
-            
+                        
             session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                LogService.shared.log(data: data, response: response, error: error)
-                if let data = data {
+                var message = ""
+                if let error = error {
+                    message = error.localizedDescription
+                } else if let data = data {
                     if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
                         let dataResource = json["data"] as? NSDictionary {
                         if let infoID = dataResource["id"] as? Int{
+                            message = "Creating object #\(infoID) success"
                             success(infoID)
                         } else if let outputStr = String(data: data, encoding: String.Encoding.utf8) {
                             print(outputStr)
@@ -112,7 +121,7 @@ class Networking {
                             failure("Error")
                         }
                     } else if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, let error = json["error"] as? String {
-                        
+                        message = error
                         failure(error)
                         
                     } else if let outputStr = String(data: data, encoding: String.Encoding.utf8) {
@@ -121,6 +130,7 @@ class Networking {
                         failure("Error")
                     }
                 }
+                LogService.shared.log(log: Log(username: username, date: Date(),message: message))
             }).resume()
             
             
@@ -143,15 +153,17 @@ class Networking {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            LogService.shared.log(data: data, response: response, error: error)
-            if let data = data {
+            var message = ""
+            if let error = error {
+                message = error.localizedDescription
+            } else if let data = data {
                 if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
                     let dataResource = json["data"] as? NSDictionary {
                     if let infoID = dataResource["id"] as? Int,
                         let infoName = dataResource["name"] as? String,
                         let infoValue = dataResource["value"] as? String {
+                        message = "Reading object #\(infoID) success"
                         success(Info(id: infoID, name: infoName, value: infoValue))
                     } else if let outputStr = String(data: data, encoding: String.Encoding.utf8) {
                         print(outputStr)
@@ -159,7 +171,7 @@ class Networking {
                         failure("Error")
                     }
                 } else if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, let error = json["error"] as? String {
-                    
+                    message = error
                     failure(error)
                     
                 } else if let outputStr = String(data: data, encoding: String.Encoding.utf8) {
@@ -168,6 +180,7 @@ class Networking {
                     failure("Error")
                 }
             }
+            LogService.shared.log(log: Log(username: username, date: Date(),message: message))
         }).resume()
     }
     
@@ -191,15 +204,17 @@ class Networking {
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: [])
             request.httpBody = data
-            LogService.shared.log(request: request)
             session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                LogService.shared.log(data: data, response: response, error: error)
-                if let data = data {
+                var message = ""
+                if let error = error {
+                    message = error.localizedDescription
+                } else if let data = data {
                     if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary,
                         let dataResource = json["data"] as? NSDictionary {
                         if let infoID = dataResource["id"] as? Int,
                             let infoName = dataResource["name"] as? String,
                             let infoValue = dataResource["value"] as? String {
+                            message = "Changing object #\(infoID) success"
                             success(Info(id: infoID, name: infoName, value: infoValue))
                             
                         } else if let outputStr = String(data: data, encoding: String.Encoding.utf8) {
@@ -208,7 +223,7 @@ class Networking {
                             failure("Error")
                         }
                     } else if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary, let error = json["error"] as? String {
-                        
+                        message = error
                         failure(error)
                         
                     } else if let outputStr = String(data: data, encoding: String.Encoding.utf8) {
@@ -217,7 +232,7 @@ class Networking {
                         failure("Error")
                     }
                 }
-                
+                LogService.shared.log(log: Log(username: username, date: Date(),message: message))
             }).resume()
         } catch let error {
             failure(error.localizedDescription)
@@ -231,9 +246,7 @@ class Networking {
         let session = URLSession.shared
         let url = URL(string: urlString)!
         let request = URLRequest(url: url)
-        LogService.shared.log(request: request)
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            LogService.shared.log(data: data, response: response, error: error)
             if let data = data
             {
                 //let data = try?  JSONSerialization.data(withJSONObject: response, options: .prettyPrinted),
@@ -257,9 +270,8 @@ class Networking {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        LogService.shared.log(request: request)
+
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            LogService.shared.log(data: data, response: response, error: error)
             if let data = data {
                 if let info = try? JSONDecoder().decode([Info].self, from: data) {
                     success(info)
